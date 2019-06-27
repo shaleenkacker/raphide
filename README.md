@@ -1,4 +1,4 @@
-# raphide
+# Raphide
 A microservice can be designed as a collection of functions which perform a specific role. The atomicisation of  the microservice enables scalability, concurrency and fault tolerance, among other benefits. It also makes the service loose grained and highly extensible. The functions can be used in an event sourced mode and real time mode. 
                 Having a servlerless microservice design helps removing the dependency of the service on containers to provision and deploy and aids in portability of the software across environments. 
                The above is an architectural diagram of an idea for a serverless microservice design. The service delivers its context using functions. The core functions of a typical microservice are, 
@@ -9,7 +9,7 @@ A microservice can be designed as a collection of functions which perform a spec
 5.	Scheduler
  
 Core components of the design. 
-1.	RphContext : Works in the Async mode and processes requests, payloads to attach a context to the request. The request, for example, could be to add, update or delete a record.
+1.	#RphContext : Works in the Async mode and processes requests, payloads to attach a context to the request. The request, for example, could be to add, update or delete a record.
 2.	RphProcessQ: A Topic that distributes a request with a context to the server. It's also subscribed to by the events handler which creates an event for every message in the topic. 
 3.	RphServer: It is the core function of the microservice. The server processes the request with the context. It delegates further processing to additional functions if required and aggregates the results. It also talks with external interfaces, other microservices and persistence. It does not, however, respond to a request from the context in real time. That is done through the real time handler. 
 4.	RphRT: A synchronous, light weight, equivalent of the Context, processes the request and prepares the response in real time. It can fetch the results from persistence or cache, depends on the state. 
